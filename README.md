@@ -44,7 +44,7 @@ mac app为例配合如下代码：
 	    dispatch_async(dispatch_get_global_queue(0, 0), ^(void) {
 	        
 	        NSString * tPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/mac_app_updater.sh"];
-	        NSString * command = [NSString stringWithFormat:@"sh %@ %@",tPath,downloadUrl];
+	        NSString * command = [NSString stringWithFormat:@"sh %@ %@ %@",tPath,downloadUrl,appName];
 	        const char * cc = [command cStringUsingEncoding:NSUTF8StringEncoding];
 	        system(cc);
 	            

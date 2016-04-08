@@ -4,8 +4,8 @@ then
   brew install curl
 fi
 
-download_path="$HOME/Downloads/resign.zip"
-app_name="resignIPA.app"
+download_path="$HOME/Downloads/$2.zip"
+app_name="$2.app"
 app_path="$HOME/Downloads/$app_name"
 to_path="/Applications/$app_name"
 
@@ -23,7 +23,7 @@ then
     mv -f $app_path  $to_path
     rm $download_path
 
-    pinfo="$(ps -A | grep 'resignIPA' -m 1 | cut -d ' ' -f 1 | xargs -n 1 echo)"
+    pinfo="$(ps -A | grep $to_path -m 1 | sed -e 's/^[[:space:]]*//g' | cut -d ' ' -f 1 | xargs -n 1 echo)"
     kill -9 $pinfo
     sleep 3
     open $to_path
