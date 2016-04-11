@@ -26,6 +26,7 @@ then
     pinfo="$(ps -A | grep $to_path -m 1 | sed -e 's/^[[:space:]]*//g' | cut -d ' ' -f 1 | xargs -n 1 echo)"
     kill -9 $pinfo
     sleep 3
+    xattr -dr com.apple.quarantine $to_path
     open $to_path
   fi
 fi
