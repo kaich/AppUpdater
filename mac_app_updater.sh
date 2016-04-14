@@ -23,8 +23,8 @@ then
     mv -f $app_path  $to_path
     rm $download_path
 
-    pinfo="$(ps -A | grep $to_path -m 1 | sed -e 's/^[[:space:]]*//g' | cut -d ' ' -f 1 | xargs -n 1 echo)"
-    kill -9 $pinfo
+    ps -A | grep $to_path | sed -e 's/^[[:space:]]*//g' | cut -d ' ' -f 1 | xargs -n 1 kill -9
+
     sleep 3
     xattr -dr com.apple.quarantine $to_path
     open $to_path
